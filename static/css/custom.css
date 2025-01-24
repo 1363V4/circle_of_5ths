@@ -5,9 +5,14 @@
 :root {
   color-scheme: light dark;
   --text-color: light-dark(#232527, #c7b4b4);
-  --primary-color: #ffbb00;
   --bg-color: light-dark(#9294c0, #23266a);
   --bg-color-2: hsl(from var(--bg-color) h calc(s - 20) l);
+}
+
+@property --primary-color {
+  syntax: "<color>";
+  inherits: false;
+  inital-value: #ffbb00;
 }
 
 * {
@@ -146,11 +151,11 @@ main {
 }
 
 .note[selected] {
-  background-color: hsl(from var(--primary-color) h s calc(-15 + l - 5 * var(--mood)));
+  background-color: hsl(from var(--primary-color) h s calc(30 + l - 5 * var(--mood)));
 }
 
 #scale {
   padding: 1rem;
   font-size: 2.5rem;
-  color: hsl(from var(--primary-color) h s calc(-15 + l - 5 * var(--mood)));
+  color: hsl(from var(--primary-color) h s calc(30 + l - 5 * var(--mood)));
 }
