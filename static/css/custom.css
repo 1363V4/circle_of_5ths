@@ -1,0 +1,156 @@
+@import url(gold.css);
+
+/* CUSTOM */
+
+:root {
+  color-scheme: light dark;
+  --text-color: light-dark(#232527, #c7b4b4);
+  --primary-color: #ffbb00;
+  --bg-color: light-dark(#9294c0, #23266a);
+  --bg-color-2: hsl(from var(--bg-color) h calc(s - 20) l);
+}
+
+* {
+  color: var(--text-color);
+}
+
+body {
+  font-family: "Geist Mono", serif;
+  min-height: 100vh;
+  max-width: 100vw;
+  background: var(--bg-color);
+}
+
+/* COMPONENTS */
+
+#sidebar {
+  display: grid;
+  align-content: stretch;
+  background-color: var(--bg-color-2);
+}
+
+#sidebar, header, footer {
+  text-align: center;
+}
+
+header {
+  font-family: "Edu AU VIC WA NT Arrows", serif;
+}
+
+footer {
+  font-size: 50%;
+}
+
+#magic-checkbox {
+  margin-left: -2rem;
+  justify-self: start;
+  background-size: contain;
+  mix-blend-mode: difference;
+  filter: invert(1);
+  
+  @media (prefers-color-scheme: light) {
+    background-image: url("../img/moon.png");
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    background-image: url("../img/sun.png");
+  }
+}
+
+#magic-checkbox input {
+  cursor: pointer;
+  opacity: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+#magic-checkbox:has(input:checked) {
+  @media (prefers-color-scheme: light) {
+    background-image: url("../img/sun.png");
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    background-image: url("../img/moon.png");
+  }
+}
+
+:root:has(#theme-checkbox:checked) {
+  @media (prefers-color-scheme: light) {
+    color-scheme: dark;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    color-scheme: light;
+  }
+}
+
+main {
+  background: linear-gradient(
+    to left,
+    var(--bg-color),
+    var(--bg-color-2)
+  );
+  background-size: 400% 400%;
+  animation: animate-gradient 10s ease infinite;
+}
+
+@keyframes animate-gradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+/* CIRCLE */
+
+@property --turn {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+@property --bg-circle {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #23276a;
+}
+
+#container {
+  aspect-ratio: 1/1;
+  width: 30rem;
+  anchor-name: --container;
+  border-radius: 50%;
+}
+
+.note {
+  display: grid;
+  place-content: center;
+  position: fixed;
+  position-anchor: --container;
+  position-area: center;
+  background-color: var(--bg-color-2);
+  background-image: url("../img/music.png");
+  background-size: contain;
+  color: white;
+  width: 5rem;
+  height: 5rem;
+  transition: 0.3s ease-in;
+  border-radius: 1rem;
+  filter: drop-shadow(0px 0px 4px var(--primary-color));
+  font-size: 120%;
+  font-weight: 900;
+}
+
+@property --mood {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.note[selected] {
+  background-color: hsl(from var(--primary-color) h s calc(-15 + l - 5 * var(--mood)));
+}
+
+#scale {
+  padding: 1rem;
+  font-size: 2.5rem;
+  color: hsl(from var(--primary-color) h s calc(-15 + l - 5 * var(--mood)));
+}
