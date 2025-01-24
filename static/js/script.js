@@ -11,10 +11,10 @@ var scalePointer = 1
 
 notes.forEach(note => {
     note.style.setProperty(
-        'margin-top', `calc(30rem * sin(((var(--turn) + ${note.dataset.note}turn - 3turn)/12)))`
+        'margin-top', `calc(25rem * sin(((var(--turn) + ${note.dataset.note}turn - 3turn)/12)))`
     );
     note.style.setProperty(
-        'margin-left', `calc(30rem * cos(((var(--turn) + ${note.dataset.note}turn - 3turn)/12)))`
+        'margin-left', `calc(25rem * cos(((var(--turn) + ${note.dataset.note}turn - 3turn)/12)))`
     );
     note.style.setProperty(
         'rotate', `calc((var(--turn) + ${note.dataset.note}turn)/12)`
