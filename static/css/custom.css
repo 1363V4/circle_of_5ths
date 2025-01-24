@@ -33,7 +33,7 @@ body {
   display: grid;
   align-content: stretch;
   background-color: var(--bg-color-2);
-  min-width: 400px;
+  min-width: 340px;
 }
 
 #sidebar, header, footer {
@@ -93,6 +93,7 @@ footer {
 }
 
 main {
+  min-height: 62vh;
   background: linear-gradient(
     to left,
     var(--bg-color),
@@ -107,6 +108,7 @@ main {
     background-position: 100% 50%;
   }
 }
+
 /* CIRCLE */
 
 @property --turn {
