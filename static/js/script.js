@@ -8,13 +8,15 @@ const scale2 = ["lydien", "majeur", "myxolidien", "dorien", "mineur", "phrygien"
 var notesArray = [11, 0, 1, 2, 3, 4, 5];
 var turn = 0;
 var scalePointer = 1
+const screenMin = Math.min(screen.height, screen.width);
+const offset = screenMin * 0.5;
 
 notes.forEach(note => {
     note.style.setProperty(
-        'margin-top', `calc(25rem * sin(((var(--turn) + ${note.dataset.note}turn - 3turn)/12)))`
+        'margin-top', `calc(${offset}px * sin(((var(--turn) + ${note.dataset.note}turn - 3turn)/12)))`
     );
     note.style.setProperty(
-        'margin-left', `calc(25rem * cos(((var(--turn) + ${note.dataset.note}turn - 3turn)/12)))`
+        'margin-left', `calc(${offset}px * cos(((var(--turn) + ${note.dataset.note}turn - 3turn)/12)))`
     );
     note.style.setProperty(
         'rotate', `calc((var(--turn) + ${note.dataset.note}turn)/12)`
