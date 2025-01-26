@@ -33,7 +33,7 @@ body {
   display: grid;
   align-content: stretch;
   background-color: var(--bg-color-2);
-  min-width: 340px;
+  min-width: 320px;
 }
 
 #sidebar, header, footer {
@@ -43,6 +43,13 @@ body {
 header {
   font-family: "Edu AU VIC WA NT Arrows", serif;
   font-weight: 900;
+}
+
+#scale {
+  padding: 1rem;
+  font-size: 2.5rem;
+  color: hsl(from var(--primary-color) h s calc(6 + l - 6 * var(--mood)));
+  filter: drop-shadow(0px 0px 4px white);
 }
 
 footer {
@@ -93,7 +100,8 @@ footer {
 }
 
 main {
-  min-height: 62vh;
+  justify-items: stretch;
+  justify-content: stretch;
   background: linear-gradient(
     to left,
     var(--bg-color),
@@ -124,44 +132,119 @@ main {
 }
 
 #container {
-  aspect-ratio: 1/1;
-  width: 30vw;
-  anchor-name: --container;
-  border-radius: 50%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas:
+    ". . . A . . ."
+    ". . L . B . ."
+    ". K . . . C ."
+    "J . . . . . D"
+    ". I . . . E ."
+    ". . H . F . ."
+    ". . . G . . .";
+    padding: 10%;
+    rotate: calc(var(--turn) / 12);
+    transition: 0.1s ease-in-out;
+    --note-offset: 50%;
+}
+  
+#container > div:nth-child(2) {
+    position: relative;
+    top: calc(var(--note-offset) * -1);
+    left: var(--note-offset);
+}
+#container > div:nth-child(3) {
+    position: relative;
+    top: calc(var(--note-offset) * -1);
+    left: var(--note-offset);
+}
+#container > div:nth-child(5) {
+    position: relative;
+    top: var(--note-offset);
+    left: var(--note-offset);
+}
+#container > div:nth-child(6) {
+    position: relative;
+    top: var(--note-offset);
+    left: var(--note-offset);
+}
+#container > div:nth-child(8) {
+    position: relative;
+    top: var(--note-offset);
+    left: calc(var(--note-offset) * -1);
+}
+#container > div:nth-child(9) {
+    position: relative;
+    top: var(--note-offset);
+    left: calc(var(--note-offset) * -1);
+}
+#container > div:nth-child(11) {
+    position: relative;
+    top: calc(var(--note-offset) * -1);
+    left: calc(var(--note-offset) * -1);
+}
+#container > div:nth-child(12) {
+    position: relative;
+    top: calc(var(--note-offset) * -1);
+    left: calc(var(--note-offset) * -1);
 }
 
 .note {
-  display: grid;
-  place-content: center;
-  position: fixed;
-  position-anchor: --container;
-  position-area: center;
   background-color: var(--bg-color-2);
-  background-image: url("../img/music.png");
-  background-size: contain;
+  border-radius: 50%;
   color: white;
-  width: 5rem;
-  height: 5rem;
-  transition: 0.3s ease-in;
-  border-radius: 1rem;
+  height: 100%;
+  aspect-ratio: 1/1;
   filter: drop-shadow(0px 0px 4px var(--primary-color));
-  font-size: 120%;
+  font-size: 180%;
   font-weight: 900;
-}
-
-@property --mood {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
+  rotate: calc(var(--turn) * -1 / 12);
+  transition: 0.5s ease-out;
 }
 
 .note[selected] {
   background-color: hsl(from var(--primary-color) h s calc(6 + l - 6 * var(--mood)));
 }
 
-#scale {
-  padding: 1rem;
-  font-size: 2.5rem;
-  color: hsl(from var(--primary-color) h s calc(6 + l - 6 * var(--mood)));
-  filter: drop-shadow(0px 0px 4px white);
+.note[data-note="0"] {
+  grid-area: A;
+}
+.note[data-note="1"] {
+  grid-area: B;
+}
+.note[data-note="2"] {
+  grid-area: C;
+}
+.note[data-note="3"] {
+  grid-area: D;
+}
+.note[data-note="4"] {
+  grid-area: E;
+}
+.note[data-note="5"] {
+  grid-area: F;
+}
+.note[data-note="6"] {
+  grid-area: G;
+}
+.note[data-note="7"] {
+  grid-area: H;
+}
+.note[data-note="8"] {
+  grid-area: I;
+}
+.note[data-note="9"] {
+  grid-area: J;
+}
+.note[data-note="10"] {
+  grid-area: K;
+}
+.note[data-note="11"] {
+  grid-area: L;
+}
+
+@property --mood {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
 }
