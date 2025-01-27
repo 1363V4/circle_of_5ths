@@ -9,8 +9,6 @@ const scale2 = ["Lydian", "Ionian", "Mixolydian", "Dorian", "Aeolian", "Phrygian
 var notesArray = [11, 0, 1, 2, 3, 4, 5];
 var turn = 0;
 var scalePointer = 1
-const screenMin = Math.min(screen.height, screen.width);
-const offset = screenMin * 0.5;
 
 function update() {
     notes.forEach(note => {
