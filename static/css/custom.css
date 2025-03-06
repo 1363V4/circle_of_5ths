@@ -100,7 +100,7 @@ footer {
 main {
   justify-items: stretch;
   justify-content: stretch;
-  padding: 5%;
+  padding-inline: 5%;
   background: linear-gradient(
     to left,
     var(--bg-color),
