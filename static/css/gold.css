@@ -70,7 +70,7 @@
 	}
 	audio, canvas, embed, iframe, img, object, svg, video {
 		vertical-align: middle;
-		display: block;
+		display: inline-block;
 	}
 	img, video {
 		max-width: 100%;
