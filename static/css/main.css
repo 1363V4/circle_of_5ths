@@ -1,0 +1,6 @@
+@layer daisy, gold, custom;
+
+
+@import url(https://cdn.jsdelivr.net/combine/npm/daisyui@beta/base/scrollbar.css,npm/daisyui@beta/components/button.css,npm/daisyui@beta/components/mask.css,npm/daisyui@beta/components/swap.css,npm/daisyui@beta/utilities/glass.css,npm/daisyui@beta/utilities/join.css,npm/daisyui@beta/utilities/radius.css,npm/daisyui@beta/theme/light.css) layer(daisy);
+@import url(gold.css) layer(gold);
+@import url(custom.css) layer(custom);
